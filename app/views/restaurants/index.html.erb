@@ -1,3 +1,5 @@
+<%= render 'shared/counter', count: @restaurant_count %>
+
 <div class="container">
   <div class="row">
     <div class="col">
@@ -5,7 +7,13 @@
 
       <ul>
         <% @restaurants.each do |restaurant| %>
-          <li><%= link_to restaurant.name, restaurant_path(restaurant) %></li>
+          <li>
+            <%= link_to restaurant.name, restaurant_path(restaurant) %>
+            <br>
+            <small>
+              <%= link_to "Delete", restaurant_path(restaurant), method: :delete, remote: true %>
+            </small>
+          </li>
         <% end %>
       </ul>
     </div>

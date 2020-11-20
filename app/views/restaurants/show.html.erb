@@ -11,12 +11,12 @@
           Be the first to leave a review for <%= @restaurant.name %>
         <% else %>
           <% @restaurant.reviews.each do |review| %>
-            <p><%= review.content %></p>
+            <p class="my-5" id="review-<%= review.id %>"><%= review.content %></p>
           <% end %>
         <% end %>
       </div>
 
-      <%= simple_form_for([ @restaurant, @review ]) do |f| %>
+      <%= simple_form_for([ @restaurant, @review ], remote: true) do |f| %>
         <%= f.input :content, as: :text %>
         <%= f.button :submit, class: "btn btn-primary" %>
       <% end %>
