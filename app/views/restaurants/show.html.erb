@@ -3,10 +3,10 @@
     <div class="col">
       <h1><%= @restaurant.name %> <small><%= @restaurant.address %></small></h1>
       <h2>
-        <%= pluralize @restaurant.reviews.size, "person" %>
+        <%= pluralize @restaurant.reviews.size, "review" %>
       </h2>
 
-      <div id="reviews">
+      <div id="reviews" class="my-5">
         <% if @restaurant.reviews.blank? %>
           Be the first to leave a review for <%= @restaurant.name %>
         <% else %>
@@ -15,6 +15,11 @@
           <% end %>
         <% end %>
       </div>
+
+      <%= simple_form_for([ @restaurant, @review ]) do |f| %>
+        <%= f.input :content, as: :text %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>
